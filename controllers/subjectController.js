@@ -5,6 +5,8 @@
 var Utils = require('../utils/utils.js');
 var User = require('../models/user.js');
 var mongoose = require('mongoose');
+var requestIp = require('request-ip');
+
 
 
 var subjectController = function(Subject){
@@ -41,6 +43,7 @@ var subjectController = function(Subject){
 
         var query = {};
 
+        var clientIp = requestIp.getClientIp(req);
         if (req.query._id) {   //todo fix this
             query.user =   { $ne: mongoose.Types.ObjectId(req.query._id) }; //that way we will allow only find by email, else it will bring back everything.
         }
@@ -52,7 +55,7 @@ var subjectController = function(Subject){
                 console.log(err);
                 res.status(500).send(err);
             } else {
-                res.json({subjects:subjects,publicIp:req.connection.remoteAddress});
+                res.json({subjects:subjects,publicIp:clientIp});
             }
         });
     };
