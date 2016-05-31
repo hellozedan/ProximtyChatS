@@ -6,7 +6,9 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
-var db = mongoose.connect('mongodb://admin:sa1234@ds032319.mlab.com:32319/mydb');
+var db = mongoose.connect('mongodb://sa:sa1234@ds011933.mlab.com:11933/proximity-chat');
+//var db = mongoose.connect('mongodb://admin:sa1234@ds011933.mlab.com:11933/proximity-chat');
+
 var User = require('./models/user');
 var Subject = require('./models/subject');
 //var Activity = require('./models/activity');

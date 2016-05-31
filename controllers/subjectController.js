@@ -52,7 +52,7 @@ var subjectController = function(Subject){
                 console.log(err);
                 res.status(500).send(err);
             } else {
-                res.json(subjects);
+                res.json({subjects:subjects,publicIp:req.connection.remoteAddress});
             }
         });
     };
